@@ -143,6 +143,11 @@ header {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
+.order-now {
+    background-color: rgba(0, 0, 0, 0.068);
+}
+
+header .menu-cross,
 header .menu-icon {
     color: white;
     float: right;

@@ -38,21 +38,29 @@
 /* Untuk Smartphone */
 @media all and (max-width: 670px) {
     .header-right {
-        display: none;
         width: 100%;
         height: 100%;
-        background-color: rgba(0,0,0,0.9);
+        display: none;
+        background-color: rgba(0,0,0,0.7);
+
     }
 
     .header-right a {
         float: none;
+
+    }
+
+    .header-right a:hover {
+        color: #000;
+        font-weight: bolder;
     }
 
     header .menu-icon {
         display: block;
+        cursor: pointer;
     }
 
-    header .menu-icon:hover ~ .header-right{
+    header .menu-icon:active ~ .header-right a {
         display: block;
     }
 
@@ -141,6 +149,6 @@
     }
 
     .tombol-up {
-      z-index: 5;
+        z-index: 5;
     }
 }
