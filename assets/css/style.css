@@ -26,6 +26,7 @@ a {
     max-width: 1170px;
     padding: 0 15px;
     margin: 0 auto;
+    width: 100%;
 }
 
 /* ---------------------------------------top-wrapper */
@@ -108,11 +109,11 @@ footer .fa {
 /* ---------------------------------------header */
 header {
     height: 65px;
-    width: 100%;
     background-color: #80b82d;
     position: fixed;
     top: 0;
     z-index: 10;
+    width: 100%;
 }
 
 .logo {
@@ -186,7 +187,7 @@ header .menu-icon {
 
 .makanan-icon img {
     width: 80%;
-    height: 200px;
+    height: 220px;
     border-radius: 10%;
     box-shadow: 5px 5px 10px 1px #000;
 }
@@ -196,9 +197,11 @@ header .menu-icon {
     top: 44%;
     width: 100%;
     color: white;
+    font-weight: bolder;
+    font-size: 24px;
 }
 
-.txt-contents {
+.makanan-contents {
     width: 80%;
     display: inline-block;
     margin-top: 15px;
@@ -249,9 +252,10 @@ header .menu-icon {
     top: 80%;
     width: 100%;
     color: white;
+    font-size: 18px;
 }
 
-.txt-contents {
+.team-contents {
     width: 80%;
     display: inline-block;
     margin-top: 15px;
@@ -295,6 +299,8 @@ footer {
     height: 53vh;
     color: #000;
     line-height: 30px;
+    float: left;
+    width: 100%;
 }
 
 .footer-item {
@@ -322,7 +328,7 @@ footer {
     width: 80%;
     height: 50px;
 }
-.footer3 p{
+.footer3 p {
     font-size: 12px;
     color: rgb(124, 124, 124);
     margin: 0;
@@ -351,7 +357,8 @@ footer {
     margin-left: -1em;
 }
 
-.footer-item input[type=text], .footer-item input[type=email] {
+.footer-item input[type=email],
+.footer-item input[type=text] {
     width: 100%;
     height: 30px;
     padding: 0 10px;
@@ -376,7 +383,8 @@ footer {
     color: rgb(124, 124, 124);
 }
 
-.footer-item input[type=text]:focus, .footer-item input[type=email]:focus {
+.footer-item input[type=email]:focus,
+.footer-item input[type=text]:focus {
     box-shadow: #80b82d 1px 1px 1px 1px;
     outline: none;
 }
@@ -397,12 +405,15 @@ footer {
     height: 85px;
     background-color: #80b82d;
     color: #fff;
+    float: left;
+    width: 100%;
 }
 
 .down-left {
     float: left;
     padding: 15px 20px;
 }
+
 .down-right {
     float: right;
     line-height: 85px;

@@ -1,56 +1,135 @@
 /* Untuk Tablet */
 @media all and (max-width: 1000px) {
-  .top-wrapper h1 {
-    font-size: 32px;
-  }
-  
-  .heading h2 {
-    font-size: 20px;
-  }
-  
-  .lesson {
-    width: 50%;
-    padding-bottom: 50px;
-  }
+    .top-wrapper h1 {
+        font-size: 32px;
+    }
+
+    .heading h2 {
+        font-size: 20px;
+    }
+
+    .makanan {
+        width: 50%;
+        padding-bottom: 50px;
+    }
+
+    .makanan-icon img {
+        height: 260px;
+    }
+
+    .team-icon p {
+        font-size: 12px;
+    }
+
+    .team-contents {
+        font-size: 11px;
+    }
+
+    .footer-up {
+        height: 100%;
+    }
+
+    .footer-item {
+        width: 50%;
+    }
+
 }
 
 /* Untuk Smartphone */
 @media all and (max-width: 670px) {
-  .header-right {
-    display: none;
-  }
-  
-  header .menu-icon {
-    display: block;
-  }
-  
-  .top-wrapper {
-    text-align: left;
-  }
-  
-  .top-wrapper h1 {
-    font-size: 24px;
-    line-height: 36px;
-  }
-  
-  .top-wrapper p{
-    font-size: 14px;
-    line-height: 20px;
-  }
-  
-  .btn {
-    width: 100%;
-  }
-  
-  .facebook {
-    margin-bottom: 10px;
-  }
-  
-  .lesson {
-    width: 100%;
-  }
-  
-  footer {
-    text-align: center;
-  }
+    .header-right {
+        display: none;
+    }
+
+    header .menu-icon {
+        display: block;
+    }
+
+    .top-wrapper {
+        text-align: left;
+        border-radius: 0;
+    }
+
+    .top-wrapper img {
+        width: 100%;
+    }
+
+    .top-wrapper h1 {
+        font-size: 24px;
+        line-height: 36px;
+    }
+
+    .top-wrapper p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .shape {
+        border-radius: 0;
+    }
+
+    .makanan {
+        width: 100%;
+    }
+
+    .team {
+        width: 100%;
+    }
+
+    .team-contents {
+        margin-bottom: 20px;
+    }
+
+    .order-wrapper .heading h2 {
+        font-size: 22px;
+    }
+
+    .order-wrapper .heading h3 {
+        font-size: 16px;
+    }
+
+    .footer {
+        text-align: center;
+    }
+
+    .footer-item {
+        width: 100%;
+    }
+    .footer1 p {
+        line-height: 24px;
+    }
+
+    .footer4 p {
+        font-size: 14px;
+    }
+
+    .footer-item ul li {
+        line-height: 24px;
+        font-size: 14px;
+    }
+
+    .footer-item ul li::before {
+        content: "\213C";
+        display: none;
+    }
+
+    .footer-down {
+        height: 100%;
+    }
+
+    .down-right {
+        float: left;
+    }
+
+    .down-left {
+        padding: 20px 65px 0;
+    }
+
+    .down-left h2 {
+        font-size: 24px;
+    }
+
+    .tombol-up {
+        display: none;
+    }
 }
