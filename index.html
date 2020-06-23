@@ -20,8 +20,9 @@
                 <div class="header-left">
                     <img class="logo" src="assets/img/mda-logo21.png">
                 </div>
-                <div class="fa fa-bars menu-icon"></div>
-                <div class="header-right">
+                <div class="fa fa-bars menu-icon" id="menu-icon"></div>
+                <div class="fa fa-times menu-cross" id="menu-cross"></div>
+                <div class="header-right" id="listmenu">
                     <a href="#">Home</a>
                     <a href="#makanan-wrapper">Our Menu</a>
                     <a href="#team-wrapper">Our Team</a>
@@ -206,4 +207,48 @@
             </div>
         </footer>
     </body>
+
+    <script type="text/javascript">
+        document
+            .getElementById("menu-icon")
+            .onclick = function () {
+                bars()
+            };
+
+        function bars() {
+            document
+                .getElementById("listmenu")
+                .style
+                .display = "block";
+            document
+                .getElementById("menu-cross")
+                .style
+                .display = "block";
+            document
+                .getElementById("menu-icon")
+                .style
+                .display = "none";
+        }
+
+        document
+            .getElementById("menu-cross")
+            .onclick = function () {
+                cross()
+            };
+
+        function cross() {
+            document
+                .getElementById("listmenu")
+                .style
+                .display = "none";
+            document
+                .getElementById("menu-icon")
+                .style
+                .display = "block";
+            document
+                .getElementById("menu-cross")
+                .style
+                .display = "none";
+        }
+    </script>
 </html>
