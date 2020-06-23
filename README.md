@@ -1,6 +1,6 @@
 # makanduluaja
 -----------------------------------------
-Kami Tim ProJ22
+Fisrt Project Kami Tim ProJ22
 Progate DTS OA 
 -----------------------------------------
 1. 0447977121-494 Teteng
