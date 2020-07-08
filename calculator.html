@@ -45,107 +45,47 @@
                 </div>
             </div>
         </div>
-        <div class="makanan-wrapper" id="makanan-wrapper">
+        <div class="hitung-wrapper" id="hitung-wrapper">
             <div class="container">
                 <div class="heading">
-                    <h2>Makan dulu aja, sinih mau pilih yang mana?</h2>
+                    <h2>Hitung makananmu sebelum di makan di bayar dulu atuh..!</h2>
                 </div>
-                <div class="makanans">
-                    <div class="makanan">
-                        <div class="makanan-icon">
-                            <img src="assets/img/vegetariant.jpg">
-                            <p>Vegetariant</p>
-                        </div>
-                        <p class="makanan-contents">Vegetariant taste untuk yang ingin sehat bersama sayuran segar nan lezat</p>
-                    </div>
-                    <div class="makanan">
-                        <div class="makanan-icon">
-                            <img src="assets/img/beef.jpg">
-                            <p>Beef</p>
-                        </div>
-                        <p class="makanan-contents">Beef / daging sapi panggang dengan pengolahan
-                            spesial dan cita rasa alami tak terkalahkan</p>
-                    </div>
-                    <div class="makanan">
-                        <div class="makanan-icon">
-                            <img src="assets/img/coffe.jpg">
-                            <p>Coffe</p>
-                        </div>
-                        <p class="makanan-contents">All variant coffe untuk anda pecinta kopi sejati. Hot atau Ice coffe lengkap</p>
-                    </div>
-                    <div class="makanan">
-                        <div class="makanan-icon">
-                            <img src="assets/img/juice.jpg">
-                            <p>Juice</p>
-                        </div>
-                        <p class="makanan-contents">Aneka minuman dingin segar. Buah pilihan yang fresh cocok untuk siang anda</p>
-                    </div>
-                    <div class="clear"></div>
+                <div class="hitungs">
+                    <form class="kalkulator" name="Calc">
+                        <table class="tabel">
+                            <tr>
+                                <td>
+                                    <input class="kolomhitung" type="text" name="Input"><br/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <input type="button" value="1" onclick="Calc.Input.value += '1'"/>
+                                    <input type="button" value="2" onclick="Calc.Input.value += '2'"/>
+                                    <input type="button" value="3" onclick="Calc.Input.value += '3'"/>
+                                    <input type="button" value="+" onclick="Calc.Input.value += '+'"/><br>
+                                    <input type="button" value="4" onclick="Calc.Input.value += '4'"/>
+                                    <input type="button" value="5" onclick="Calc.Input.value += '5'"/>
+                                    <input type="button" value="6" onclick="Calc.Input.value += '6'"/>
+                                    <input type="button" value="-" onclick="Calc.Input.value += '-'"/><br>
+                                    <input type="button" value="7" onclick="Calc.Input.value += '7'"/>
+                                    <input type="button" value="8" onclick="Calc.Input.value += '8'"/>
+                                    <input type="button" value="9" onclick="Calc.Input.value += '9'"/>
+                                    <input type="button" value="x" onclick="Calc.Input.value += '*'"/><br>
+                                    <input type="button" value="C" onclick="Calc.Input.value = ''"/>
+                                    <input type="button" value="0" onclick="Calc.Input.value += '0'"/>
+                                    <input
+                                        type="button"
+                                        value="="
+                                        onclick="Calc.Input.value = eval(Calc.Input.value)"/>
+                                    <input type="button" value="/" onclick="Calc.Input.value += '/'"/>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </form>
                 </div>
-            </div>
-        </div>
-        <div class="team-wrapper" id="team-wrapper">
-            <div class="container">
-                <div class="heading">
-                    <h2>Our Staff officer</h2>
-                </div>
-                <div class="teams">
-                    <div class="team">
-                        <div class="team-icon">
-                            <img src="assets/img/teteng.png">
-                            <p>Teteng</p>
-                        </div>
-                        <p class="team-contents">Peserta DTS OA Batch2 Progate Kelas J
-                            <br>0447977121-494<br>
-                            Teteng</p>
-                    </div>
-                    <div class="team">
-                        <div class="team-icon">
-                            <img src="assets/img/yusran.png">
-                            <p>Yusran</p>
-                        </div>
-                        <p class="team-contents">Peserta DTS OA Batch2 Progate Kelas J
-                            <br>0447977011-48<br>
-                            Teuku Yusransyah Tandi</p>
-                    </div>
-                    <div class="team">
-                        <div class="team-icon">
-                            <img src="assets/img/wensi.png">
-                            <p>Wensi</p>
-                        </div>
-                        <p class="team-contents">Peserta DTS OA Batch2 Progate Kelas J
-                            <br>0447977200-3<br>
-                            Wensi Sekarsari</p>
-                    </div>
-                    <div class="team">
-                        <div class="team-icon">
-                            <img src="assets/img/wendy.png">
-                            <p>Wendy Mei</p>
-                        </div>
-                        <p class="team-contents">Peserta DTS OA Batch2 Progate Kelas J
-                            <br>0447977150-30<br>
-                            Wendy Mei Ika Nur Ainni</p>
-                    </div>
-                    <div class="team">
-                        <div class="team-icon">
-                            <img src="assets/img/wendy2.png">
-                            <p>Wendy</p>
-                        </div>
-                        <p class="team-contents">Peserta DTS OA Batch2 Progate Kelas J
-                            <br>0447977061-29<br>
-                            Wendy Wijaya</p>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-        </div>
-        <div class="order-wrapper" id="order-wrapper">
-            <div class="container">
-                <div class="heading">
-                    <h2>Makan dulu aja! Order sekarang biar ga ribet</h2>
-                    <h3>Kami menyediakan layanan Delivery Order untuk memenuhi kenyamanan anda</h3>
-                </div>
-                <span class="btn order">Order Sekarang</span>
             </div>
         </div>
 
