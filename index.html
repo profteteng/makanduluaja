@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EcoWaste Market — E‑Commerce Sampah Daur Ulang</title>
+  <meta name="description" content="Jual-bbeli material daur ulang: plastik, kertas, logam, kaca, e-waste, dan organik. Jadwalkan pickup dan lihat daftar harga/kg." />
+  <style>
+    :root{
+      --bg:#ffffff; --text:#111827; --muted:#6b7280; --brand:#059669; --brand-2:#10b981; --card:#f9fafb; --border:#e5e7eb;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,'Helvetica Neue',Arial,'Noto Sans',sans-serif;background:var(--bg);color:var(--text);}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 16px}
+    header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.8);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:600}
+    .badge{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:999px;background:var(--brand);color:#fff}
+    .menu{display:none;gap:16px}
+    .menu a{font-size:14px;color:#374151}
+    .menu a:hover{color:#111827}
+    .nav-actions{display:flex;gap:8px}
+    .btn{border:1px solid var(--border);padding:8px 12px;border-radius:10px;background:#fff;font-size:14px;cursor:pointer}
+    .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+    .btn.ghost{background:transparent}
+    .btn.block{display:block;width:100%}
+    .btn:active{transform:translateY(1px)}
+    .hamburger{display:inline-flex}
+    @media(min-width:768px){ .menu{display:flex} .hamburger{display:none} }
+
+    /* hero */
+    .hero{background:linear-gradient(180deg,#ecfdf5, #fff);border-bottom:1px solid var(--border)}
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:24px;padding:48px 0}
+    @media(min-width:768px){.hero-grid{grid-template-columns:1fr 1fr;padding:64px 0}}
+    h1{font-size:36px;line-height:1.15;margin:0 0 12px;font-weight:800}
+    .lead{color:var(--muted);font-size:18px;margin:0 0 16px}
+    .mock{aspect-ratio:16/10;background:#fff;border-radius:18px;box-shadow:0 10px 25px rgba(0,0,0,.06);padding:16px;display:grid;place-items:center}
+    .mock-inner{border-radius:14px;width:100%;height:100%;display:grid;place-content:center;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;text-align:center}
+    .mock-inner p{margin:4px 0}
+    .hash{font-size:22px;font-weight:700}
+    .sub{opacity:.9}
+
+    /* sections */
+    section{padding:48px 0}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:18px;gap:12px}
+    h2{font-size:24px;margin:0 0 4px}
+    .muted{color:var(--muted);font-size:14px}
+
+    /* grid & cards */
+    .grid{display:grid;gap:16px}
+    @media(min-width:768px){.grid.cols-2{grid-template-columns:repeat(2,1fr)} .grid.cols-3{grid-template-columns:repeat(3,1fr)} .grid.cols-4{grid-template-columns:repeat(4,1fr)}}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}
+    .card:hover{box-shadow:0 8px 20px rgba(0,0,0,.06)}
+    .card h3{font-size:16px;margin:8px 0}
+    .chip{display:inline-block;font-size:12px;color:#065f46;background:#d1fae5;padding:4px 8px;border-radius:999px}
+    .price{font-size:20px;font-weight:700}
+    .small{font-size:12px;color:var(--muted)}
+
+    /* list */
+    ul.clean{padding-left:18px;margin:8px 0}
+    ul.clean li{margin:6px 0;color:#374151;font-size:14px}
+
+    /* footer */
+    footer{border-top:1px solid var(--border);background:#f9fafb}
+    .fgrid{display:grid;gap:16px}
+    @media(min-width:768px){.fgrid{grid-template-columns:2fr 1fr 1fr 1fr}}
+
+    /* mobile drawer */
+    .drawer{display:none;border-top:1px solid var(--border);padding:12px 0;animation:slideDown .3s ease-out}
+    .drawer a{display:block;padding:10px 0;color:#374151;transition:color .2s}
+    .drawer a:hover{color:var(--brand)}
+    @media(min-width:768px){.drawer{display:none!important}}
+
+    /* ANIMATIONS */
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(10px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    @keyframes slideDown{
+      from{opacity:0;transform:translateY(-10px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    @keyframes slideUp{
+      from{opacity:0;transform:translateY(20px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    @keyframes slideLeft{
+      from{opacity:0;transform:translateX(-30px)}
+      to{opacity:1;transform:translateX(0)}
+    }
+
+    @keyframes slideRight{
+      from{opacity:0;transform:translateX(30px)}
+      to{opacity:1;transform:translateX(0)}
+    }
+
+    @keyframes pulse{
+      0%,100%{opacity:1}
+      50%{opacity:.7}
+    }
+
+    @keyframes scaleIn{
+      from{opacity:0;transform:scale(.95)}
+      to{opacity:1;transform:scale(1)}
+    }
+
+    @keyframes bounce{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-8px)}
+    }
+
+    @keyframes shimmer{
+      0%{background-position:200% center}
+      100%{background-position:-200% center}
+    }
+
+    /* Apply animations to sections */
+    section{animation:fadeIn .6s ease-out both}
+    section:nth-child(1){animation-delay:0s}
+    section:nth-child(2){animation-delay:.1s}
+    section:nth-child(3){animation-delay:.2s}
+    section:nth-child(4){animation-delay:.3s}
+    section:nth-child(5){animation-delay:.4s}
+    section:nth-child(6){animation-delay:.5s}
+
+    /* Hero animation */
+    .hero-grid > div:first-child{animation:slideLeft .7s ease-out}
+    .hero-grid > div:last-child{animation:slideRight .7s ease-out}
+
+    h1{animation:slideLeft .8s ease-out;animation-delay:.2s;animation-fill-mode:both}
+    .lead{animation:slideLeft .8s ease-out;animation-delay:.3s;animation-fill-mode:both}
+    .hero-grid > div:first-child > div{animation:slideLeft .8s ease-out;animation-delay:.4s;animation-fill-mode:both}
+
+    /* Mock/Hero Image */
+    .mock-inner{animation:scaleIn .8s ease-out;animation-delay:.5s;animation-fill-mode:both}
+    .mock-inner:hover{transform:scale(1.05);box-shadow:0 15px 35px rgba(5,150,105,.2)}
+
+    /* Card animations */
+    .card{animation:slideUp .5s ease-out both;transition:all .3s cubic-bezier(.4,0,.2,1)}
+    .grid.cols-3 .card:nth-child(1){animation-delay:.1s}
+    .grid.cols-3 .card:nth-child(2){animation-delay:.15s}
+    .grid.cols-3 .card:nth-child(3){animation-delay:.2s}
+    .grid.cols-3 .card:nth-child(4){animation-delay:.25s}
+    .grid.cols-3 .card:nth-child(5){animation-delay:.3s}
+    .grid.cols-3 .card:nth-child(6){animation-delay:.35s}
+
+    .grid.cols-4 .card:nth-child(1){animation-delay:.1s}
+    .grid.cols-4 .card:nth-child(2){animation-delay:.15s}
+    .grid.cols-4 .card:nth-child(3){animation-delay:.2s}
+    .grid.cols-4 .card:nth-child(4){animation-delay:.25s}
+
+    .grid.cols-2 .card:nth-child(1){animation-delay:.1s}
+    .grid.cols-2 .card:nth-child(2){animation-delay:.2s}
+
+    .card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.12)}
+
+    /* Button animations */
+    .btn{transition:all .3s ease;position:relative;overflow:hidden}
+    .btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:rgba(255,255,255,.2);transition:left .3s ease}
+    .btn:hover::before{left:100%}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
+    .btn.primary:hover{box-shadow:0 6px 20px rgba(5,150,105,.3)}
+
+    /* Badge animation */
+    .badge{animation:scaleIn .6s ease-out .1s both}
+    .badge:hover{animation:pulse .8s ease-in-out infinite}
+
+    /* Section titles animation */
+    h2{animation:slideLeft .7s ease-out;animation-fill-mode:both}
+    section h2{animation-delay:.15s}
+
+    /* Link hover effects */
+    a{transition:color .2s ease}
+    header a:hover{color:var(--brand)}
+    footer a{color:#6b7280;transition:color .2s ease}
+    footer a:hover{color:var(--brand);transform:translateX(2px);display:inline-block}
+
+    /* Chip animation */
+    .chip{display:inline-flex;align-items:center;animation:slideUp .5s ease-out both;animation-delay:inherit}
+    .chip:hover{background:#a7f3d0;transform:scale(1.05)}
+
+    /* Price animation */
+    .price{animation:slideUp .6s ease-out;animation-fill-mode:both}
+    .card .price{animation-delay:.2s}
+
+    /* Input-like focus effects for better interactivity */
+    .btn:focus{outline:2px solid var(--brand);outline-offset:2px}
+
+    /* Mobile menu animation */
+    .drawer a{animation:slideDown .3s ease-out forwards}
+    .drawer a:nth-child(1){animation-delay:.05s}
+    .drawer a:nth-child(2){animation-delay:.1s}
+    .drawer a:nth-child(3){animation-delay:.15s}
+    .drawer a:nth-child(4){animation-delay:.2s}
+    .drawer a:nth-child(5){animation-delay:.25s}
+    .drawer a:nth-child(6){animation-delay:.3s}
+    .drawer a:nth-child(7){animation-delay:.35s}
+
+    /* Header stick animation */
+    header{animation:slideDown .4s ease-out}
+
+    /* Footer animation */
+    footer{animation:fadeIn 1s ease-out}
+
+    /* Smooth scroll behavior */
+    html{scroll-behavior:smooth}
+
+    /* SLIDESHOW STYLES */
+    .slideshow-container{position:relative;width:100%;max-width:100%;background:#000;overflow:hidden;border-bottom:1px solid var(--border)}
+    .slides-wrapper{position:relative;width:100%;padding-bottom:56.25%;background:linear-gradient(135deg,#ecfdf5,#d1fae5)}
+    .slides-wrapper iframe,.slide-item{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+    .slide-item{opacity:0;transition:opacity .8s ease-in-out;display:flex;align-items:center;justify-content:center;padding:40px 20px;text-align:center;animation:none}
+    .slide-item.active{opacity:1;animation:fadeInSlide .8s ease-in-out}
+    .slide-item.prev{opacity:0}
+
+    .slide-content{max-width:600px;animation:slideUp .6s ease-out}
+
+    .slide-item h2{font-size:32px;color:var(--brand);margin:0 0 16px;font-weight:800;animation:slideDown .6s ease-out .1s both}
+    .slide-item p{font-size:16px;color:#374151;margin:0 0 24px;line-height:1.6;animation:slideUp .6s ease-out .2s both}
+    .slide-item .btn{animation:slideUp .6s ease-out .3s both;animation-fill-mode:both;margin:0 8px}
+
+    .slide-dot-container{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:20}
+    .dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;transition:all .3s;border:2px solid transparent}
+    .dot.active{background:var(--brand);transform:scale(1.2);border-color:var(--brand)}
+    .dot:hover{background:var(--brand-2);transform:scale(1.15)}
+
+    .slide-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.8);border:none;width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;transition:all .3s;z-index:15;color:#111827}
+    .slide-btn:hover{background:var(--brand);color:#fff;transform:translateY(-50%) scale(1.1)}
+    .slide-btn.prev{left:20px}
+    .slide-btn.next{right:20px}
+
+    @keyframes fadeInSlide{
+      from{opacity:0}
+      to{opacity:1}
+    }
+
+    @media(max-width:768px){
+      .slide-item h2{font-size:24px}
+      .slide-item p{font-size:14px}
+      .slide-btn{width:40px;height:40px;font-size:20px}
+      .slide-btn.prev{left:10px}
+      .slide-btn.next{right:10px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <span class="badge">E</span> <span>EcoWaste</span>
+      </a>
+      <nav class="menu" id="top-menu">
+        <a href="#kategori">Kategori</a>
+        <a href="#harga">Harga/kg</a>
+        <a href="#produk">Produk</a>
+        <a href="#pickup">Pickup</a>
+        <a href="#edukasi">Edukasi</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn primary">Keranjang</button>
+        <button class="btn hamburger" id="hamburger">Menu</button>
+      </div>
+    </div>
+    <div class="container drawer" id="drawer">
+      <a href="#kategori">Kategori</a>
+      <a href="#harga">Harga/kg</a>
+      <a href="#produk">Produk</a>
+      <a href="#pickup">Pickup</a>
+      <a href="#edukasi">Edukasi</a>
+      <a href="#kontak">Kontak</a>
+      <a href="#about">About</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- SLIDESHOW -->
+    <div class="slideshow-container">
+      <div class="slides-wrapper">
+        <div class="slide-item active">
+          <div class="slide-content">
+            <h2>♻️ Ubah Sampah Jadi Uang</h2>
+            <p>Jual material daur ulang Anda dengan harga terbaik dan proses yang mudah. Jadwalkan penjemputan gratis untuk area tertentu.</p>
+            <div>
+              <a class="btn primary" href="#produk">Jual Sekarang</a>
+              <a class="btn" href="#harga">Lihat Harga</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-item">
+          <div class="slide-content">
+            <h2>🛒 Beli Material Siap Kirim</h2>
+            <p>Butuh bahan baku untuk pabrik atau komunitas? Temukan berbagai material berkualitas tinggi dengan harga kompetitif.</p>
+            <div>
+              <a class="btn primary" href="#produk">Belanja Material</a>
+              <a class="btn" href="#kategori">Lihat Kategori</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-item">
+          <div class="slide-content">
+            <h2>🌱 Dukung Ekonomi Sirkular</h2>
+            <p>Setiap pembelian dan penjualan Anda berkontribusi pada lingkungan yang lebih bersih. Mari bersama-sama ciptakan perubahan positif.</p>
+            <div>
+              <a class="btn primary" href="#edukasi">Pelajari Lebih Lanjut</a>
+              <a class="btn" href="#pickup">Jadwalkan Pickup</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-item">
+          <div class="slide-content">
+            <h2>🚚 Penjemputan Terjadwal</h2>
+            <p>Minimal 5 kg, pembayaran instant, tracking digital, dan bukti timbang. Semua untuk kenyamanan Anda.</p>
+            <div>
+              <a class="btn primary" href="#pickup">Buat Jadwal Sekarang</a>
+              <a class="btn" href="#kategori">Syarat & Ketentuan</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Dots -->
+      <div class="slide-dot-container" id="dots"></div>
+
+      <!-- Navigation Arrows -->
+      <button class="slide-btn prev" id="prevBtn">❮</button>
+      <button class="slide-btn next" id="nextBtn">❯</button>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Jual‑Beli Sampah Daur Ulang, Lebih Mudah</h1>
+          <p class="lead">Pilah, jual, atau beli material siap olah. Jadwalkan pickup dan pantau dampak lingkunganmu.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn primary" href="#produk">Belanja Material</a>
+            <a class="btn" href="#pickup">Jadwalkan Pickup</a>
+          </div>
+        </div>
+        <div class="mock">
+          <div class="mock-inner">
+            <p class="hash">#RecycleToEarn</p>
+            <p class="sub">Circular Economy for Everyone</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KATEGORI -->
+    <section id="kategori">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Kategori Material</h2>
+            <p class="muted">Pilih jenis material yang ingin kamu jual atau beli.</p>
+          </div>
+          <a class="btn ghost" href="#produk">Lihat Semua</a>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card">
+            <span class="chip">Plastik</span>
+            <h3>PET, HDPE, PP</h3>
+            <p class="small">Pilah bersih & kering.</p>
+          </div>
+          <div class="card">
+            <span class="chip">Kertas</span>
+            <h3>Kardus, HVS, Duplex</h3>
+            <p class="small">Tidak berminyak.</p>
+          </div>
+          <div class="card">
+            <span class="chip">Logam</span>
+            <h3>Aluminium, Besi, Tembaga</h3>
+            <p class="small">Tanpa residu berbahaya.</p>
+          </div>
+          <div class="card">
+            <span class="chip">Kaca</span>
+            <h3>Botol & Pecahan</h3>
+            <p class="small">Pisahkan warna.</p>
+          </div>
+          <div class="card">
+            <span class="chip">Elektronik</span>
+            <h3>E‑waste</h3>
+            <p class="small">Salurkan ke mitra berizin.</p>
+          </div>
+          <div class="card">
+            <span class="chip">Organik</span>
+            <h3>Sisa Dapur & Taman</h3>
+            <p class="small">Kompos/BSF.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HARGA -->
+    <section id="harga" style="background:#f9fafb;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="container">
+        <h2>Harga Beli Material (Estimasi)</h2>
+        <p class="muted">Harga dapat berubah sesuai kualitas & volume.</p>
+        <div class="grid cols-3" style="margin-top:12px">
+          <div class="card">
+            <h3>Plastik PET bening</h3>
+            <div class="price">Rp 5.500 <span class="small">/kg</span></div>
+          </div>
+          <div class="card">
+            <h3>Plastik HDPE (jerigen)</h3>
+            <div class="price">Rp 6.500 <span class="small">/kg</span></div>
+          </div>
+          <div class="card">
+            <h3>Kardus (OCC)</h3>
+            <div class="price">Rp 2.500 <span class="small">/kg</span></div>
+          </div>
+          <div class="card">
+            <h3>Aluminium (kaleng)</h3>
+            <div class="price">Rp 18.000 <span class="small">/kg</span></div>
+          </div>
+          <div class="card">
+            <h3>Besi campur</h3>
+            <div class="price">Rp 3.500 <span class="small">/kg</span></div>
+          </div>
+          <div class="card">
+            <h3>Botol kaca bening</h3>
+            <div class="price">Rp 1.200 <span class="small">/kg</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUK -->
+    <section id="produk">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Material Siap Kirim</h2>
+            <p class="muted">Bundle siap olah untuk pabrik/komunitas.</p>
+          </div>
+        </div>
+        <div class="grid cols-4">
+          <div class="card">
+            <h3>Bundle PET 25 kg (press)</h3>
+            <p class="small">Grade A • Siap kirim</p>
+            <div class="price" style="margin:8px 0">Rp 130.000</div>
+            <a class="btn block primary" href="#">Beli</a>
+          </div>
+          <div class="card">
+            <h3>OCC 50 kg (ikat)</h3>
+            <p class="small">Kering • Tanpa minyak</p>
+            <div class="price" style="margin:8px 0">Rp 120.000</div>
+            <a class="btn block primary" href="#">Beli</a>
+          </div>
+          <div class="card">
+            <h3>Kaleng Alu 20 kg</h3>
+            <p class="small">Terkuras • Non-magnet</p>
+            <div class="price" style="margin:8px 0">Rp 320.000</div>
+            <a class="btn block primary" href="#">Beli</a>
+          </div>
+          <div class="card">
+            <h3>HDPE warna 30 kg</h3>
+            <p class="small">Campur • Cuci ringan</p>
+            <div class="price" style="margin:8px 0">Rp 180.000</div>
+            <a class="btn block primary" href="#">Beli</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PICKUP -->
+    <section id="pickup" style="border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="container">
+        <div class="section-head">
+          <h2>Jadwalkan Penjemputan Sampah</h2>
+          <a class="btn" href="#">Buat Jadwal</a>
+        </div>
+        <ul class="clean">
+          <li>Minimal 5 kg (kota), 20 kg (luar kota)</li>
+          <li>Tracking & bukti timbang digital</li>
+          <li>Pembayaran: tunai, transfer, atau saldo dompet</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EDUKASI -->
+    <section id="edukasi">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Edukasi & Berita</h2>
+            <p class="muted">Belajar memilah dan mengelola sampah yang aman.</p>
+          </div>
+          <a class="btn ghost" href="#">Semua Artikel</a>
+        </div>
+        <div class="grid cols-2">
+          <div class="card">
+            <p class="small">10 Nov 2025</p>
+            <h3>Cara Memilah Plastik di Rumah (5 menit)</h3>
+            <p class="small">Mulai dari botol hingga sachet: langkah cepat memilah agar bernilai jual.</p>
+            <a class="btn" href="#">Baca Selengkapnya</a>
+          </div>
+          <div class="card">
+            <p class="small">9 Nov 2025</p>
+            <h3>Panduan Pickup Terjadwal untuk UKM</h3>
+            <p class="small">Atur penjemputan mingguan/bulanan, kurangi penumpukan dan kebauan.</p>
+            <a class="btn" href="#">Baca Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="kontak">
+    <div class="container" style="padding:28px 0">
+      <div class="fgrid">
+        <div>
+          <div class="brand"><span class="badge">E</span> <span>EcoWaste</span></div>
+          <p class="small" style="margin-top:8px">Jl. Lingkar Hijau No. 10, Bandung 40123</p>
+          <p class="small">Telp: (022) 123 4567 • Email: hello@ecowaste.id</p>
+        </div>
+        <div>
+          <h3 style="font-size:14px;margin:6px 0">Navigasi</h3>
+          <a class="small" href="#kategori">Kategori</a><br/>
+          <a class="small" href="#harga">Harga/kg</a><br/>
+          <a class="small" href="#produk">Produk</a><br/>
+          <a class="small" href="#pickup">Pickup</a><br/>
+          <a class="small" href="#edukasi">Edukasi</a><br/>
+        </div>
+        <div>
+          <h3 style="font-size:14px;margin:6px 0">Layanan</h3>
+          <a class="small" href="#">Jadwalkan Pickup</a><br/>
+          <a class="small" href="#">Cek Area Layanan</a><br/>
+          <a class="small" href="#">Daftar Mitra</a><br/>
+        </div>
+        <div>
+          <h3 style="font-size:14px;margin:6px 0">Ikuti Kami</h3>
+          <a class="small" href="#">Instagram</a><br/>
+          <a class="small" href="#">LinkedIn</a><br/>
+          <a class="small" href="#">YouTube</a><br/>
+        </div>
+      </div>
+      <p class="small" style="text-align:center;margin-top:18px">© <span id="y"></span> EcoWaste Market. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Slideshow functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide-item');
+    const totalSlides = slides.length;
+    let autoSlideTimer;
+
+    function showSlide(n){
+      if(n >= totalSlides){currentSlide = 0}
+      if(n < 0){currentSlide = totalSlides - 1}
+      
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[currentSlide].classList.add('active');
+      
+      // Update dots
+      const dots = document.querySelectorAll('.dot');
+      dots.forEach(dot => dot.classList.remove('active'));
+      if(dots[currentSlide]){dots[currentSlide].classList.add('active')}
+      
+      resetAutoSlide();
+    }
+
+    function nextSlide(){
+      currentSlide++;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide(){
+      currentSlide--;
+      showSlide(currentSlide);
+    }
+
+    function goToSlide(n){
+      currentSlide = n;
+      showSlide(currentSlide);
+    }
+
+    function autoSlide(){
+      autoSlideTimer = setTimeout(() => {
+        nextSlide();
+        autoSlide();
+      }, 5000);
+    }
+
+    function resetAutoSlide(){
+      clearTimeout(autoSlideTimer);
+      autoSlide();
+    }
+
+    // Create dots
+    const dotsContainer = document.getElementById('dots');
+    for(let i = 0; i < totalSlides; i++){
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goToSlide(i);
+      dotsContainer.appendChild(dot);
+    }
+
+    // Event listeners
+    document.getElementById('nextBtn').addEventListener('click', nextSlide);
+    document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+    // Start auto-slide
+    autoSlide();
+
+    // Mobile menu toggle
+    const hb = document.getElementById('hamburger');
+    const dr = document.getElementById('drawer');
+    if(hb){
+      hb.addEventListener('click', ()=>{
+        const show = dr.style.display === 'block';
+        dr.style.display = show ? 'none' : 'block';
+      });
+    }
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
